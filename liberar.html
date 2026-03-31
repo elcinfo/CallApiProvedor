@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elc net</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js"></script>
+    <script src="js/comum.js"></script>
+    <script src="js/liberar.js"></script>
+</head>
+
+<body onload=cabecalho()>
+    <div class="div-container" id="div-cabecalho"></div>
+
+    <div class="div-container" id="soucpf-container">
+        <p class="titulo-pagina">Liberar Acesso</p>
+        <p class="orientacao-1">Digite o CPF do cliente:</p>
+
+        <input type="text" id="cpf" onfocus="digitarCPF()" placeholder="somente números..." maxlength="14"
+            oninput="mascaraCPF(this)" class="input-text">
+        <br><br>
+        <a id="soucnpj" class="sou-cnpj" href="javascript:souCNPJ()">sou cnpj</a>
+    </div>
+
+    <div class="div-container" id="soucnpj-container" style="display: none;">
+        <p class="titulo-pagina">Liberar Acesso</p>
+        <p class="orientacao-1">Digite o CNPJ da Empresa:</p>
+
+        <input type="text" id="cnpj" onfocus="digitarCNPJ()" placeholder="somente números..." maxlength="18"
+            oninput="mascaraCNPJ(this)" class="input-text">
+        <br><br>
+        <a id="soucpf" class="sou-cpf" href="javascript:souCPF()">sou cpf</a>
+    </div>
+
+    <div id="div-enviar">
+        <button class="btn-small" onclick="getDadosCliente()" style="display: block;">Enviar</button>
+    </div>
+
+    <div class="div-container" id="div-cliente" style="display: none;">
+        <p>Código: <span id="codigo"></span></p>
+        <p>Nome: <span class="bold" id="nome"></span></p>
+        <p>Endereço: <span id="endereco"></span></p>
+        <p style="display: none;">CPF: <span id="CPF"></span></p>
+    </div>
+
+    <div class="div-container" id="div-confirmar-msg" style="display: none;">
+        <p class="mensagem bold">Confirma o nome do cliente?</p>
+    </div>
+
+    <div id="div-confirmar-btn" style="display: none;">
+        <button class="btn-small" onclick="getDadosIpBloq()">Confirmar</button>
+    </div>
+
+    <div class="div-container" id="erro-container" style="display: none;">
+        <p class="erro">Não foi possível atender sua solicitação.</p>
+        <p class="erro">Entre em contato com o Provedor</p>
+        <p class="erro">Pelo Whatsapp</p>
+        <a class="a-link" href="https://wa.me/5518997760998">(18) 99776-0998</a>
+        <p class="erro">Ou digite o CPF novamente</p>
+    </div>
+
+    <div class="div-container" id="erro-container-pj" style="display: none;">
+        <p class="erro">Não foi possível atender sua solicitação.</p>
+        <p class="erro">Entre em contato com o Provedor</p>
+        <p class="erro">Pelo Whatsapp</p>
+        <a class="a-link" href="https://wa.me/5518997760998">(18) 99776-0998</a>
+        <p class="erro">Ou digite o CNPJ novamente</p>
+    </div>
+
+    <div class="div-container" id="div-diasatraso" style="display: none;">
+        <p class="erro">Mensalidade vencida há <span class="bold" id="diasatraso"></span> dias</p>
+    </div>
+
+    <div class="div-container" id="falha-ipbloq" style="display: none;">
+        <p class="erro">Sua internet não está bloqueada.</p>
+        <p class="erro">Dúvidas?</p>
+        <p class="erro">Entre em contato com o Provedor</p>
+        <p class="erro">Pelo Whatsapp</p>
+        <a class="a-link" href="https://wa.me/5518997760998">(18) 99776-0998</a>
+    </div>
+
+    <div class="div-container" id="naoliberar-ipbloq" style="display: none;">
+        <p class="erro">Não foi possível atender sua solicitação.</p>
+        <p class="erro">Entre em contato com o Provedor</p>
+        <p class="erro">Pelo Whatsapp</p>
+        <a class="a-link" href="https://wa.me/5518997760998">(18) 99776-0998</a>
+    </div>
+
+    <div class="div-container" id="liberado-ipbloq" style="display: none;">
+        <p class="erro">Solicitação atendida com sucesso.</p>
+        <p class="erro">Dúvidas?</p>
+        <p class="erro">Entre em contato com o Provedor</p>
+        <p class="erro">Pelo Whatsapp</p>
+        <a class="a-link" href="https://wa.me/5518997760998">(18) 99776-0998</a>
+    </div>
+
+    <!--div class="div-container" id="boleto-container" style="display: none;">
+        <label for="select-meses">MENSALIDADES PENDENTES:</label>
+        <select class="select-meses" name="select-meses" id="select-meses" onchange="showMonth(this);">
+        </select>
+    </div-->
+
+    <!--div class="div-container boleto-container" id="div-boleto" style="display: none;">
+        <p>Referência: <span class="bold" id="referencia"></span></p>
+        <p>Vencimento: <span id="vencimento"></span></p>
+        <p>Valor: <span id="valor"></span></p>
+        <p>Forma de Pagamento: <span id="forma"></span></p>
+    </div-->
+
+    <!--div class="div-container" id="numeracao" style="display: none;"></div-->
+
+    <!--div id="chavepix" style="display: none;"></div-->
+
+    <div id="div-opcoes" style="display: none;">
+        <a id="ja-paguei" href="javascript:jaPaguei()">Já Paguei</a>
+        <a id="vou-pagar" href="javascript:vouPagar()">Vou Pagar</a>
+    </div>
+
+    <!--div>
+        <input type="date" value="2025-10-07" style="display: none;">
+    </div-->
+
+</body>
+
+</html>
