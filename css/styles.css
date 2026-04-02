@@ -260,3 +260,23 @@ a {
     display: block;
     text-align: center;
 }
+
+.button-menu {
+    font-size: 20px;
+    color: #FFF;
+    
+    background-color: var(--color-dark-blue);
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    opacity: 0, 8;
+
+    margin: 6px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+
+}
