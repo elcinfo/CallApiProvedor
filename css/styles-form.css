@@ -1,0 +1,79 @@
+:root {
+    --cinza-escuro: rgb(50, 50, 50);
+    --cinza-medio: rgb(80, 80, 80);
+    --cinza-claro: rgb(110, 110, 110);
+    --color-blue: #275dfeef;
+    --color-dark-blue: #0539d3;
+    --color-lite-blue: #2287e6e5;
+    --color-opaco-blue: #1449dbe5;
+    --color-branco: #ffffffff;
+}
+
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 8px;
+    font-size: 16px;
+    
+}
+
+body {
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.titulo-principal {
+    text-align: center;
+    font-size: 32px;
+    line-height: 0.1;
+    color: var(--color-dark-blue);
+}
+
+.titulo-secundario {
+    text-align: center;
+    font-size: 18px;
+    line-height: 0.2;
+    color: var(--cinza-medio);
+}
+
+.titulo-pagina {
+    text-align: center;
+    font-size: 22px;
+    line-height: 0.4;
+    color: var(--cinza-medio);
+}
+
+.container_form {
+    width: 90%;
+    line-height: 2;
+}
+
+.form_label {
+    color: var(--color-lite-blue);
+    padding: 8px 5px;
+}
+
+.form_input {
+    color: var(--color-lite-blue);
+    border: 2px solid gainsboro;
+    background: #ebf4f8;
+    display: block;
+    display: flex;
+    padding: 8px 15px;
+    width: 100%;
+}
+
+/* SUBMIT */
+.submit_btn {
+    background-color: var(--color-opaco-blue);
+    color: var(--color-branco);
+    font-size: 18px;
+    margin: 20px auto;
+    cursor: pointer;
+    padding: 8px 15px;
+    border: none;
+    display: block;
+}
+
+.submit_btn:hover {
+    opacity: 0.8;
+}

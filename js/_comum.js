@@ -43,9 +43,10 @@ async function urlGet(urlget) {
 }
 
 async function pingTest(ip) {
-    blockElement("div-info");
-    noneElement("btn-ip-arp");
-    noneElement("btn-reboot");
+    console.log("Event ......: onclick");
+    console.log("function ...: pingTest()");
+
+    //noneElement("div-info");
 
     await urlGet(applicationUrl + "ping/" + ip.innerText);
 
@@ -65,16 +66,10 @@ async function pingTest(ip) {
 
 async function deviceInfo(ip) {
     clearElement("div-info");
-    noneElement("btn-nome-pesquisar");
 
     if (document.getElementById("btn-ip-arp")) {
         document.getElementById("btn-ip-arp").style.backgroundColor = cinzapadrao;
         document.getElementById("btn-ip-arp").innerText = "IP ARP";
-    }
-
-    if (document.getElementById("btn-reboot")) {
-        document.getElementById("btn-reboot").style.backgroundColor = cinzapadrao;
-        document.getElementById("btn-reboot").innerText = "REBOOT";
     }
 
     await urlGet(applicationUrl + "deviceinfo/" + ip);
@@ -86,7 +81,6 @@ async function deviceInfo(ip) {
     }
 
     blockElement("btn-ip-arp");
-    blockElement("btn-reboot");
 }
 
 function mascaraCPF(i) {
@@ -134,11 +128,11 @@ function digitarCPF() {
 }
 
 function getDadosCliente() {
-    if (soucpf) {
-        getDadosClienteCPF();
+    if (soucnpj) {
+        getDadosClienteCNPJ();
     }
     else {
-        getDadosClienteCNPJ();
+        getDadosClienteCPF();
     }
 }
 
@@ -167,33 +161,25 @@ async function getDadosClienteCNPJ() {
         mostrarCliente(data);
     }
     else {
-        blockElement("erro-container");
+        blockElement("erro-container-pj");
         noneElement("div-enviar");
     }
+
 }
 
 async function getDadosClienteCPF() {
     var cpf = document.getElementById("cpf").value;
 
-    /*if (cpf.length < 14) {
+    if (cpf.length < 14) {
         alert("CPF incorreto ou incompleto...");
         return;
-    }*/
+    }
 
-    console.log("CPF Digitado/Colado: " + cpf);
     cpf = cpf.replace(".", "").replace(".", "").replace("-", "");
-    console.log("CPF Digitado/Colado: " + cpf);
 
     if (!validarCPF(cpf)) {
         alert("CPF incorreto. Digite novamente...");
         return;
-    }
-
-    if (cpf.length < 14) {
-        var newCPF;
-        newCPF = cpf.slice(0, 3) + "." + cpf.slice(3, 6) + "." + cpf.slice(6, 9) + "-" + cpf.slice(9, 11);
-        console.log("newCPF Formatado: " + newCPF);
-        document.getElementById("cpf").value = newCPF;
     }
 
     await urlGet(applicationUrl + "Cliente/" + cpf);
@@ -270,16 +256,14 @@ async function getIpmac(cliente) {
     var divnomes = document.getElementById("div-nomes");
 
     clearElement("div-nomes");
-    //clearElement("div-info");
+    clearElement("div-info");
 
     var tagcliente = document.createElement("p");
-    tagcliente.style.textAlign = "center";
     tagcliente.innerText = "(" + cliente + ") " + nome;
     divnomes.appendChild(tagcliente);
 
     var tagip = document.getElementById("btn-device-ping");
     tagip.innerText = data.ip;
-    blockElement("btn-device-ping");
 }
 
 async function ipArp() {
@@ -299,55 +283,4 @@ async function ipArp() {
         document.getElementById("btn-ip-arp").style.backgroundColor = cinzaclaro;
         document.getElementById("btn-ip-arp").innerText = "IP ARP (FALHA)";
     }
-}
-
-async function reboot() {
-    var ip = document.getElementById("btn-device-ping").innerText;
-    console.log("Reboot IP ....: " + ip);
-
-    await urlGet(applicationUrl + "reboot/" + ip); // incluir ip
-
-    console.log("Response ...........: " + data);
-
-    document.getElementById("btn-reboot").style.backgroundColor = cinzaclaro;
-
-    if (data == "EXECUTADO") {
-        document.getElementById("btn-reboot").innerText = "REBOOT (OK)";
-    }
-
-    if (data == "FALHA") {
-        document.getElementById("btn-reboot").innerText = "REBOOT (FALHA)";
-    }
-}
-
-// erro-container: CPF ou CNPJ não encontrado, mensalidades não encontradas
-function erro() {
-    //console.log("Estou em: 'function erro() onload'");
-
-    var diverro = document.getElementById("erro-container");
-    var line1 = document.createElement("p");
-    var line2 = document.createElement("p");
-    var line3 = document.createElement("p");
-    var line4 = document.createElement("a");
-    var line5 = document.createElement("p");
-
-    line1.innerText = "Não foi possível atender sua solicitação,";
-    line2.innerText = "entre em contato com o Provedor";
-    line3.innerText = "pelo Whatsapp";
-    line4.innerText = "(18) 99776-0998";
-    line5.innerText = "Ou digite o CPF novamente";
-
-    line1.setAttribute("class", "erro");
-    line2.setAttribute("class", "erro");
-    line3.setAttribute("class", "erro");
-    line4.setAttribute("class", "a-link");
-    line4.setAttribute("href", "https://wa.me/5518997760998");
-    line5.setAttribute("class", "erro");
-    line5.setAttribute("id", "erro-line5");
-
-    diverro.appendChild(line1);
-    diverro.appendChild(line2);
-    diverro.appendChild(line3);
-    diverro.appendChild(line4);
-    diverro.appendChild(line5);
 }

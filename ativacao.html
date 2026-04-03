@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elc net</title>
+    <link rel="stylesheet" href="css/styles-form.css">
+    <script src="js/script.js"></script>
+    <script src="js/comum.js"></script>
+</head>
+
+<body onload=cabecalho()>
+    <div id="div-cabecalho"></div>
+
+    <p class="titulo-pagina">Ativação</p>
+    <hr>
+
+    <!----------------------------------------------------------------------------->
+    <div class="container_form">
+
+        <form action="mailto:elcinfo@hotmail.com?subject=Nova%20Ativação" method="post" enctype="text/plain">
+
+            <div>
+                <label for="Nome" class="form_label">Nome do Cliente</label>
+                <input type="text" name="Nome" class="form_input" placeholder="Digite Nome Completo">
+
+                <label for="CPF" class="form_label">CPF</label>
+                <input type="text" name="CPF" class="form_input" placeholder="Número do CPF">
+
+                <label for="Endereco" class="form_label">Endereço</label>
+                <input type="text" name="Endereco" class="form_input" placeholder="Endereço do Cliente">
+
+                <label for="Vencimento" class="form_label">Vencimento</label>
+                <input type="text" name="Vencimento" class="form_input" placeholder="Dia de Vencimento">
+
+                <label for="Dinheiro" class="form_label">Dinheiro</label>
+                <input type="number" name="Dinheiro" class="form_input" placeholder="Recebido em Dinheiro">
+
+                <label for="IP_Temporario" class="form_label">IP temporário</label>
+                <select name="IP_Temporario" class="form_input">
+                    <option>Selecione</option>
+                    <option value="172.16.88.220">172.16.88.220</option>
+                    <option value="172.16.88.221">172.16.88.221</option>
+                    <option value="172.16.88.222">172.16.88.222</option>
+                    <option value="172.16.88.223">172.16.88.223</option>
+                    <option value="172.16.88.224">172.16.88.224</option>
+                    <option value="172.16.88.225">172.16.88.225</option>
+                    <option value="172.16.88.226">172.16.88.226</option>
+                    <option value="172.16.88.227">172.16.88.227</option>
+                    <option value="172.16.88.228">172.16.88.228</option>
+                    <option value="172.16.88.229">172.16.88.229</option>
+                </select>
+
+                <label for="Nome_Wi-Fi" class="form_label">Nome Wi-Fi</label>
+                <input type="text" name="Nome_Wi-Fi" class="form_input" placeholder="Digite o nome do Wi-Fi">
+
+                <label for="Senha_Wi-Fi" class="form_label">Senha Wi-Fi</label>
+                <input type="text" name="Senha_Wi-Fi" class="form_input" placeholder="Digite a senha do Wi-Fi">
+
+                <label for="Mensagem" class="form_label">Mensagem:</label>
+                <textarea name="Mensagem" cols="30" rows="3" class="form_input"></textarea>
+
+                <input type="submit" value="Enviar" class="submit_btn">
+        </form>
+    </div>
+    <!----------------------------------------------------------------------------->
+
+</body>
+
+</html>
