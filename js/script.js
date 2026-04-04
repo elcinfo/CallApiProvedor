@@ -1,7 +1,7 @@
 //geral ******************************************************************************************
 
 //variáveis globais
-//const applicationUrl = "http://138.122.43.34:5200/";
+//const applicationUrl = "https://138.122.43.34:5200/";
 const applicationUrl = "https://138.122.43.35:5200/";
 //const applicationUrl = "http://127.0.0.1:5200/";
 let response = null;
